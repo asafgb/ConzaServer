@@ -21,13 +21,7 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 
 
 app.get('/',(req, res) =>{
-  /*  const customers = [
-        {id:1, firstName: 'asaf', lastName: 'sh'},
-        {id:2, firstName: 'asaf', lastName: 'sh1'},
-        {id:3, firstName: 'asaf3', lastName: 'sh'},
-    ];
 
-    res.json(customers);*/
     res.json(publicKey)
 })
 
