@@ -7,7 +7,11 @@ const app = express();
 const port =5000;
 var jsonParser = bodyParser.json()
 
-app.listen(port, ()=> console.log(`start on ${port}`))
+
+app.set('domain', 'myhost.whatever');
+//app.set('port', process.env.PORT || 8080);
+
+app.listen(process.env.PORT || port, ()=> console.log(`start on ${process.env.PORT || port}`))
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: 'application/*+json' }))
