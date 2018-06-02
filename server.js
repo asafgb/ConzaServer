@@ -36,8 +36,10 @@ var rsa = new RSAKey();
 var r = rsa.generate(bits, exponent);
 var publicKey = rsa.getPublicString();//rsa.RSAGetPublicString(); // return json encoded string
 var privateKey = rsa.getPrivateString();//rsa.RSAGetPrivateString(); // return json encoded string
-
-
+//MongoDb.CreateDb();
+//MongoDb.CreateCollection();
+MongoDb.NewUser("asaf","miew");
+//MongoDb.GetAllUser();
 
 /*
 const insertDocuments = function(db, callback) {
