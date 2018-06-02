@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 const app = express();
 const port =5000;
 var jsonParser = bodyParser.json()
+const MongoDb = require('./Utilites/MongoDb')
+
 
 
 app.set('domain', 'myhost.whatever');
@@ -18,7 +20,7 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 
 
 
-app.get('/api/customers',(req, res) =>{
+app.get('/',(req, res) =>{
   /*  const customers = [
         {id:1, firstName: 'asaf', lastName: 'sh'},
         {id:2, firstName: 'asaf', lastName: 'sh1'},
@@ -26,14 +28,14 @@ app.get('/api/customers',(req, res) =>{
     ];
 
     res.json(customers);*/
+    res.json(publicKey)
 })
 
 
 /*
-Create Private Key and Public
-
+Create Private Key and Public Key
 */
-var RSAKey = require('react-native-rsa');
+const RSAKey = require('react-native-rsa');
 const bits = 1024;
 const exponent = '10001'; // must be a string
 var rsa = new RSAKey();
@@ -43,23 +45,7 @@ var privateKey = rsa.getPrivateString();//rsa.RSAGetPrivateString(); // return j
 
 
 
-
 /*
-Connect to Mongi
-
-
-*/
-
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
- 
-// Connection URL
-//const url = 'mongodb://AsafUser:wc4LoXqMDqoKYRXS@cluster0-shard-00-00-8exny.mongodb.net:27017,cluster0-shard-00-01-8exny.mongodb.net:27017,cluster0-shard-00-02-8exny.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
-//const url = 'mongodb+srv://Asafgb:Asafgb@cluster0-8exny.mongodb.net/test?retryWrites=true'
-const url ='mongodb+srv://Tester:Tester@cluster0-8exny.mongodb.net/test'
-// Database Name
-const dbName = 'asafgb';
-
 const insertDocuments = function(db, callback) {
     // Get the documents collection
     const collection = db.collection('documents');
@@ -101,8 +87,14 @@ MongoClient.connect(url, function(err, client) {
         });
       });
   });
+*/
 
 
+  /* componentDidMount(){
+    fetch('/api/customers')
+    .then(res=>res.json())
+    .then(costumer => this.setState({costumer}, ()=> console.log('loaded',costumer)));
+  }*/
 
   
 
